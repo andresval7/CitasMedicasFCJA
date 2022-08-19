@@ -4,17 +4,40 @@
  */
 package Vista;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author elfos
  */
 public class ConsPacienteFrame extends javax.swing.JInternalFrame {
-
+    
+    public Controlador.GestorPacienteController gestorPacienteController;
+    private DefaultTableModel tabla;
     /**
      * Creates new form ConsPacienteFrame
      */
     public ConsPacienteFrame() {
         initComponents();
+        gestorPacienteController = new Controlador.GestorPacienteController(this);
+        String [] titulosTabla = {
+            "identificacion",
+            "nombre1",
+            "nombre2",
+            "apellido1",
+            "apellido2",
+            "fechaNacimiento",
+            "sexo"
+        };
+        tabla = new DefaultTableModel(null,titulosTabla);
+        tableData.setModel(tabla);
+        btn_buscar.addActionListener(gestorPacienteController);
+        btn_cerrar.addActionListener(gestorPacienteController);
+        
+    }
+    
+    public DefaultTableModel getTableModel(){
+        return tabla;
     }
 
     /**
@@ -27,40 +50,40 @@ public class ConsPacienteFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        rdbIdentificacion = new javax.swing.JRadioButton();
+        rdbNombre = new javax.swing.JRadioButton();
+        rdbApellido = new javax.swing.JRadioButton();
+        valorABuscar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        tableData = new javax.swing.JTable();
+        btn_cerrar = new javax.swing.JButton();
 
         jLabel1.setText("Consultar Paciente");
 
-        jRadioButton1.setText("Identificación");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rdbIdentificacion.setText("Identificación");
+        rdbIdentificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rdbIdentificacionActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Nombre");
+        rdbNombre.setText("Nombre");
 
-        jRadioButton3.setSelected(true);
-        jRadioButton3.setText("Apellido");
+        rdbApellido.setSelected(true);
+        rdbApellido.setText("Apellido");
 
         jLabel2.setText("Buscar:");
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -71,12 +94,12 @@ public class ConsPacienteFrame extends javax.swing.JInternalFrame {
                 "Identificacion", "Nombres", "Apellidos", "Fecha de nacimiento", "Sexo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableData);
 
-        jButton3.setText("Cerrar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_cerrar.setText("Cerrar");
+        btn_cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_cerrarActionPerformed(evt);
             }
         });
 
@@ -93,20 +116,20 @@ public class ConsPacienteFrame extends javax.swing.JInternalFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jLabel2)
                         .addGap(27, 27, 27)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(valorABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(btn_buscar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jRadioButton1)
+                        .addComponent(rdbIdentificacion)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
+                        .addComponent(rdbNombre)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3))
+                        .addComponent(rdbApellido))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3)
+                            .addComponent(btn_cerrar)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -117,47 +140,47 @@ public class ConsPacienteFrame extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(rdbIdentificacion)
+                    .addComponent(rdbNombre)
+                    .addComponent(rdbApellido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(btn_buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btn_cerrar)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rdbIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbIdentificacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rdbIdentificacionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_cerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton btn_buscar;
+    public javax.swing.JButton btn_cerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JRadioButton rdbApellido;
+    public javax.swing.JRadioButton rdbIdentificacion;
+    public javax.swing.JRadioButton rdbNombre;
+    public javax.swing.JTable tableData;
+    public javax.swing.JTextField valorABuscar;
     // End of variables declaration//GEN-END:variables
 }
