@@ -34,7 +34,6 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_identificacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -53,11 +52,13 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
         botonNuevo = new javax.swing.JButton();
         botonCerrar = new javax.swing.JButton();
 
-        jLabel1.setText("Registrar paciente");
+        setResizable(true);
+        setTitle("Registrar paciente");
+        setToolTipText("");
+        setName(""); // NOI18N
 
-        jLabel2.setText("Identificación");
+        jLabel2.setText("Identificación:");
 
-        txt_identificacion.setText("identificación");
         txt_identificacion.setName("txt_identificacion"); // NOI18N
         txt_identificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +116,8 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        botonNuevo.setText("Nuevo");
+        botonNuevo.setText("Limpiar");
+        botonNuevo.setToolTipText("");
 
         botonCerrar.setText("Cerrar");
 
@@ -126,7 +128,6 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -134,7 +135,6 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_nombre1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
@@ -146,7 +146,8 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(txt_apellido2)))))
+                                    .addComponent(txt_apellido2)))
+                            .addComponent(txt_identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -162,14 +163,12 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
                         .addComponent(botonNuevo)
                         .addGap(18, 18, 18)
                         .addComponent(botonCerrar)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txt_identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -234,7 +233,6 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
     public javax.swing.JButton botonNuevo;
     public javax.swing.JButton botonRegistrar;
     public com.toedter.calendar.JDateChooser fechaNacimientoBox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

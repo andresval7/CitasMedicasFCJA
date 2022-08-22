@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.sql.Date;
 /**
  *
  * @author Andrés Vallejo
@@ -15,7 +15,7 @@ public class Paciente {
     private String nombre2;
     private String apellido1;
     private String apellido2;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     private String sexo;
     
     public Paciente(String identificacion, 
@@ -23,16 +23,16 @@ public class Paciente {
         String nombre2,
         String apellido1,
         String apellido2,
-        String fechaNacimiento,
+        Date fechaNacimiento,
         String sexo){
         
         this.setIdentificacion(identificacion);
-        this.setNombre1(nombre1);
-        this.setNombre2(nombre2);
-        this.setApellido1(apellido1);
-        this.setApellido2(apellido2);
+        this.setNombre1(nombre1.toUpperCase());
+        this.setNombre2(nombre2.toUpperCase());
+        this.setApellido1(apellido1.toUpperCase());
+        this.setApellido2(apellido2.toUpperCase());
         this.setFechaNacimiento(fechaNacimiento);
-        this.setSexo(sexo);
+        this.setSexo(sexo.toUpperCase());
         
     }
 
@@ -109,14 +109,14 @@ public class Paciente {
     /**
      * @return the fechaNacimiento
      */
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     /**
      * @param fechaNacimiento the fechaNacimiento to set
      */
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

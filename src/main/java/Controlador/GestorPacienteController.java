@@ -4,7 +4,9 @@
  */
 package Controlador;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +31,7 @@ public class GestorPacienteController implements ActionListener {
         
         if(consultarPacienteVista.rdbIdentificacion.isSelected()){
             parametro = 1;
+            
         }
         if(consultarPacienteVista.rdbNombre.isSelected()){
             parametro = 2;
@@ -37,7 +40,8 @@ public class GestorPacienteController implements ActionListener {
             parametro = 3;
         }
         
-        LinkedList<Modelo.Paciente> pacientes = pacientesModelo.getPacienteByParametro(parametro,valor);
+        
+        
         String registro [] = new String[7];
         String titulos []= {
             "identificacion",
@@ -52,7 +56,16 @@ public class GestorPacienteController implements ActionListener {
         
         
         if(e.getSource().equals(consultarPacienteVista.btn_buscar)){
+            
             tmodelo = new DefaultTableModel();
+            LinkedList<Modelo.Paciente> pacientes = pacientesModelo.getPacienteByParametro(parametro,valor);
+            if(pacientes.isEmpty() && parametro==1)
+                JOptionPane.showMessageDialog(null, "No se encontraron pacientes con ese número de documento");
+            else if(pacientes.isEmpty() && parametro==2)
+                JOptionPane.showMessageDialog(null, "No se encontraron pacientes con ese nombre");
+            else if(pacientes.isEmpty() && parametro==3)
+                JOptionPane.showMessageDialog(null, "No se encontraron pacientes con ese apellido");
+            //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             tmodelo.setColumnIdentifiers(titulos);
         
             for(Modelo.Paciente p:pacientes){
@@ -61,9 +74,9 @@ public class GestorPacienteController implements ActionListener {
                 registro[2]=p.getNombre2();
                 registro[3]=p.getApellido1();
                 registro[4]=p.getApellido2();
-                registro[5]=p.getFechaNacimiento();
+                registro[5]=p.getFechaNacimiento().toString();
                 registro[6]=p.getSexo(); 
-                
+                tmodelo.addRow(registro);
             }
             consultarPacienteVista.tableData.setModel(tmodelo);
         }
