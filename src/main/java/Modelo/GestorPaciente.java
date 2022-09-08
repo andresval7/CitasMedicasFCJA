@@ -101,7 +101,8 @@ public class GestorPaciente {
                         rs.getString("Apellido1"),
                         rs.getString("Apellido2"), 
                         rs.getDate("Fechanacimiento"),
-                        rs.getString("Sexo")));  
+                        rs.getString("Sexo")));
+                
             }
             st.close();
         }
@@ -113,4 +114,23 @@ public class GestorPaciente {
         return resultado;
     }
     
+    //3er método del CRUD -> Update paciente de acuerdo al Id
+    public void ActualizarPaciente (Paciente paciente)
+    {
+        String instruccionSql= "Update TblPacientes Set Nombre1="+paciente.getNombre1()+
+                                ", Nombre2= "+paciente.getNombre2()+
+                                ", Apellido1= "+paciente.getApellido1()+
+                                ", Apellido2= "+paciente.getApellido2()+
+                                ", Fechanacimiento= "+paciente.getFechaNacimiento().toString()+
+                                ", Sexo= "+paciente.getSexo()+
+                                ", where IdPaciente= "+paciente.getIdentificacion();
+        try{
+            PreparedStatement st=conex.prepareStatement(instruccionSql);
+            st.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro modificado");  
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }   
 }

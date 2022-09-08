@@ -39,9 +39,7 @@ public class GestorPacienteController implements ActionListener {
         if(consultarPacienteVista.rdbApellido.isSelected()){
             parametro = 3;
         }
-        
-        
-        
+
         String registro [] = new String[7];
         String titulos []= {
             "identificacion",

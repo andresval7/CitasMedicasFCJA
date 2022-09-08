@@ -17,13 +17,16 @@ public class CitasMedicasFCJA extends javax.swing.JFrame {
      */
     RegPacienteFrame  regPacienteInternalFrame;
     ConsPacienteFrame consPacienteInternalFrame;
+    EditarPacienteFrame editarPacienteInternalFrame;
     
     public CitasMedicasFCJA() {
         initComponents();
         regPacienteInternalFrame = new RegPacienteFrame();
         consPacienteInternalFrame = new ConsPacienteFrame();
+        editarPacienteInternalFrame = new EditarPacienteFrame();
         add(regPacienteInternalFrame);
         add(consPacienteInternalFrame);
+        add(editarPacienteInternalFrame);
     }
 
     /**
@@ -110,7 +113,7 @@ public class CitasMedicasFCJA extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        
+        editarPacienteInternalFrame.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
