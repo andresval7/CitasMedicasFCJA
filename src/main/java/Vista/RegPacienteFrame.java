@@ -16,6 +16,7 @@ public class RegPacienteFrame extends javax.swing.JInternalFrame {
      */
     
     private Controlador.PacienteController pacienteController;
+    public Object jButton1;
     
     public RegPacienteFrame() {
         initComponents();
